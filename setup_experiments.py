@@ -193,6 +193,6 @@ def train_progress_exps(n_saves=20):
 
 if __name__ == "__main__":
     os.makedirs("experiments", exist_ok=True)
-    # train_synthetic_exps()
-    # train_real_exps()
+    train_synthetic_exps()
+    train_real_exps()
     train_progress_exps()
