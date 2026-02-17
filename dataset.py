@@ -36,7 +36,11 @@ class Dataset(TorchDataset):
 
     @property
     def y(self):
-        return np.stack([y.item() if isinstance(y, torch.Tensor) else y for x, y in self.data]).flatten()
+        return (
+            np.stack([y.item() if isinstance(y, torch.Tensor) else y for x, y in self.data]).flatten()
+            if len(self) > 0
+            else np.array([])
+        )
 
     def filter_y(self, ys):
         ys = set(ys) if isinstance(ys, (list, tuple)) else {ys}
@@ -52,7 +56,7 @@ class Dataset(TorchDataset):
             raise ValueError(f"Cannot test accuracy for task: {self.task}")
         return sum(
             [model(torch.unsqueeze(x.to(model.device, model.dtype), 0)).argmax().item() == int(y) for x, y in self.data]
-        ) / len(self)
+        ) / (len(self) if len(self) > 0 else 1)
 
     def get_auc(self, model, multi_class="ovr", average="micro"):
         if self.task != "classification":
