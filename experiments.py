@@ -123,8 +123,7 @@ class Experiment:
             self.__dict__["_model"] = None
         if self._embedder is not None:
             self.__dict__["_embedder"] = None
-        # Remove cached properties to avoid pickling large datasets/models
-        # These can be regenerated from dataset_name and dataset_kwargs
+        # Remove cached properties to avoid pickling datasets/models
         for cached_prop in ["train_dataset", "test_dataset", "converted_model"]:
             if cached_prop in self.__dict__:
                 del self.__dict__[cached_prop]
