@@ -119,7 +119,7 @@ def main():
                 on="p",
                 how="right",
             )
-            .infer_objects(copy=False)
+            .infer_objects()
             .fillna(0)
         )
 
