@@ -2,8 +2,10 @@ Code used in the experiments of the ICLR 2026 paper ["Characterizing the Combina
 
 ## Environment Setup 
 1. Install Python 3.13
-2. Install [PyTorch 2.9 and TorchVision 0.24](https://pytorch.org/get-started/previous-versions/#:~:text=v2%2E9%2E0)
+2. Install [PyTorch and Torchvision](https://pytorch.org/get-started/locally/)[^1]
 3. Install the remaining dependencies with `pip install -r requirements.txt`
+
+[^1]: This code was tested with [PyTorch 2.9 and TorchVision 0.24](https://pytorch.org/get-started/previous-versions/#:~:text=v2%2E9%2E0) with CUDA 12.8.
 
 ## Replication of Experimental Results
 Once your environment is ready, `bash run_everything.sh` on Unix systems and `.\run_everything.ps1` on Windows will automatically run all of the experiments from the paper. This includes downloading the datasets, training the models, calculating properties of their complexes, and generating all of the figures. [run_everything.sh](run_everything.sh) also includes a line-by-line breakdown of each step, in case you would rather split them up or make any changes. When tested on Linux with a 16-core processor and a GPU, this script runs from start to finish within 12 hours. It uses 15G of disk space to store data and results.
