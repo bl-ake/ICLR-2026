@@ -58,7 +58,7 @@ def main():
 
         bfs_limit = 4000000
         point_limit = 10000
-        cplx.bfs(max_polys=bfs_limit, nworkers=64)
+        cplx.bfs(max_polys=bfs_limit)
         num_bfs_polys = len(cplx)
 
         print("Getting Data")
@@ -92,7 +92,7 @@ def main():
             points_df["Prediction"] = [np.argmax(x) for x in points_df["Logits"]]
         points_df["Correct"] = points_df["Label"] == points_df["Prediction"]
 
-        point_polys = cplx.parallel_add(points, nworkers=32)
+        point_polys = cplx.parallel_add(points)
         points_df["p"] = point_polys
         print(len(cplx))
 
