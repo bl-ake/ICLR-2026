@@ -35,7 +35,7 @@ python -m pip install -r requirements.txt
 python setup_experiments.py
 
 ## Run experiments on the networks trained on synthetic data
-python run_synthetic.py 0 235
+python run_synthetic.py 0 239
 
 ## Compute diameter bounds for the corresponding polyhedral complexes
 python diameter_bounds.py
